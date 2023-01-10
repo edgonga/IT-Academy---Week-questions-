@@ -1,23 +1,24 @@
 const capitalizer = (stringToCapitalize) => {
-    if (typeof(stringToCapitalize) == "string") {
+    if (typeof(stringToCapitalize) !== "string") {
+        return "Deberías introducir un string"}
+                                    
 
-        const stringCapitalized = ''
-        const vowels = 'AaEeIiOoUu'
-        const initialValue = 0
-        const capitalizeItenerator = stringToCapitalize.reduce((previousLetter, currentLetter), initialValue => {  //Nos lanza el error que previousLetter is not defined
-            if (previousLetter.includes(vowels)) {
-                stringCapitalized + currentLetter.toUpperCase()
-            } else stringCapitalized + currentLetter
+    const vowels = 'AaEeIiOoUu'
+    const arrayToCapitalize = Array.from(stringToCapitalize)
+    const reducer = arrayToCapitalize.reduce((accumulator, currentValue) => {
+        if (vowels.includes(currentValue)) {
+            const capitalizeCurrentValue = currentValue.toUpperCase(currentValue)
+            accumulator + capitalizeCurrentValue
             
-        })
-
-        return stringCapitalized
-
-    } 
-    else 
-    return "Deberías introducir un string"
+        } else accumulator + currentValue
+        
+    
+    })   
+    return reducer
 }
 
-
 module.exports = capitalizer
+
+
+
 
