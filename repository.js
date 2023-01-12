@@ -1,62 +1,56 @@
-// // Lógica para que el flujo de ejecución entre si la última letra es vocal
-
-const string = 'hello world'
-const vowels = 'AaEeIiOoUu'
-
-const array = Array.from(string)
-
-// // const upperArray = array.toUpperCase();
-// // console.log(upperArray);
-
-// // if (vowels.includes(array[array.length - 1])) {
-// //     console.log("Correcto");
-// // }
+// Space where only the logic was tested
+// Logic implemented using if and else clauses to control the execution flow
 
 
-const reducer = array.reduce((accumulator, currentValue) => {
-    if (vowels.includes(accumulator[accumulator.length -1])) {       
-        console.log('previous --> ' + accumulator[accumulator.length -1]);
-        console.log('current --> ' + currentValue);
-        console.log('acumulador --> ' + accumulator);
-        const capitalizePreviousValue = accumulator.toUpperCase(currentValue)
+const reducer = (value) => {
+    let result = value[0];
+    Array.from(value).reduce((previous, current) => {
+        if (/[aeiouAEIOU]/.test(previous) && !/[aeiouAEIOU]/.test(current)) {
+            result += current.toUpperCase()
+            console.log('previous --> ' + previous);
+            console.log('current --> ' + current);
+            console.log('accumulator --> ' + result);
+        } else result += current
+        console.log('previous --> ' + previous);
+        console.log('current --> ' + current);
+        console.log('accumulator --> ' + result);
+
+        if (!/[a-zA-Z]/.test(current)) {
+            return previous
+        } else return current
         
-        return capitalizePreviousValue + currentValue
-    } 
-    console.log('previous --> ' + accumulator[accumulator.length -1]);
-    console.log('current --> ' + currentValue);
-    console.log('acumulador --> ' + accumulator);
-    return accumulator + currentValue
-    
-})
+    })
 
-console.log(reducer);
+    return result
+}
+
+//reducer("hello world")
 
 
-// const capitalizer = (stringToCapitalize) => {
-//     if (typeof(stringToCapitalize) !== "string") {
-//         return "Deberías introducir un string"}
-                                    
 
-//     const vowels = 'AaEeIiOoUu'
-//     const arrayToCapitalize = Array.from(stringToCapitalize)
-//     const reducer = arrayToCapitalize.reduce((accumulator, currentValue) => {
-//         if (vowels.includes(currentValue)) {
-//             const capitalizeCurrentValue = currentValue.toUpperCase(currentValue)
-//             accumulator + capitalizeCurrentValue
-            
-            
-//         } else accumulator + currentValue
+// Logic implemented using the ternary expressions (replacing the if and else clauses)
+// It's a more elegant way to apply conditions and with less code lines
+
+
+
+
+const ternaryReducer = (ternaryString) => {
+    let result = ternaryString[0]
+    Array.from(ternaryString).reduce((previous, current) => {
+        result +=
+            /[aeiouAEIOU]/.test(previous) && !/[aeiouAEIOU]/.test(current)
+            ? current.toUpperCase()
+            : current
         
-    
-//     })   
-//     return console.log(reducer)
-        
-       
+        return !/[a-zA-Z]/.test(current)
+        ? previous
+        : current
+    })
+
+    return result
+}
+
+console.log(ternaryReducer("hello world"))
 
 
-    
-    
-
-   
-
-
+// Exercise carry on with the precious help of Marçal Chaiben (github @Chaiben)

@@ -1,20 +1,24 @@
+// Given a string, make every consonant after a vowel uppercase
+// For instance, if we receive "hello world", we should throw back "heLlo WoRld"
+// We will have to manage with the spaces and other difficulties
+
 const capitalizer = (stringToCapitalize) => {
     if (typeof(stringToCapitalize) !== "string") {
         return "Deberías introducir un string"}
                                     
-
-    const vowels = 'AaEeIiOoUu'
-    const arrayToCapitalize = Array.from(stringToCapitalize)
-    const reducer = arrayToCapitalize.reduce((accumulator, currentValue) => {
-        if (vowels.includes(currentValue)) {
-            const capitalizeCurrentValue = currentValue.toUpperCase(currentValue)
-            accumulator + capitalizeCurrentValue
-            
-        } else accumulator + currentValue
+        let result = stringToCapitalize[0];
+        Array.from(stringToCapitalize).reduce((previous, current) => {
+            if (/[aeiouAEIOU]/.test(previous) && !/[aeiouAEIOU]/.test(current)) {
+                result += current.toUpperCase()
+            } else result += current
         
+        if (!/[a-zA-Z]/.test(current)) {
+            return previous
+        } else return current
+        
+        })
     
-    })   
-    return reducer
+        return result
 }
 
 module.exports = capitalizer
