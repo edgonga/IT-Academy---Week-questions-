@@ -4,20 +4,25 @@ const adder = (num) => {
 
         
         numString = num.toString()
-        let counter = parseInt(numString[1])
-        for (let index = 1; index < numString.length; index++) {
-            if (numString[index] % 2 == 0) {
+        let counter = 0
+        for (let index = 0; index < numString.length; index++) {
+            //console.log("Index " + index);
+            //console.log("Counter " + counter)
+            
+            console.log(parseInt(numString[index]));
+            if (index % 2 !== 0) {
                 counter += parseInt(numString[index])
-                console.log(parseInt(numString[index]));
-                console.log("Index " + index); // find out how index is evolving
+                //console.log("Digit to sum" + parseInt(numString[index]));
+                //console.log("----In loop----");
+                
             }
         } 
-        console.log(counter)
+        return counter
         
 
     }
     
 
-adder(49564)
+adder(548915381)
 
 module.exports = adder
