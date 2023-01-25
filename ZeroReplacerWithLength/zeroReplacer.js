@@ -12,10 +12,15 @@ const zeroReplacer = (numberString) => {
 
             if (numberString[index] !== "0" && numberString[index -1] === "0") {
                 numberArray.splice(index, zeroCounter, zeroCounter.toString())
+                zeroCounter = 1
             }
 
             if (numberString[index] !== "0" && numberString[index -1] !== "0") {
                 zeroCounter = 1
+            }
+
+            if (numberString[index] === "0" && numberString[index -1] !== "0") {
+                zeroCounter += 1
             }
                         
         }
