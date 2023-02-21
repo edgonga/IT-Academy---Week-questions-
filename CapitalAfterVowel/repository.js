@@ -7,7 +7,7 @@ const reducer = (value) => {
     Array.from(value).reduce((previous, current) => {
         if (/[aeiouAEIOU]/.test(previous) && !/[aeiouAEIOU]/.test(current)) {
             result += current.toUpperCase()
-            console.log('previous --> ' + previous);
+            console.log('previous --> ' + previous);-
             console.log('current --> ' + current);
             console.log('accumulator --> ' + result);
         } else result += current
@@ -24,7 +24,7 @@ const reducer = (value) => {
     return result
 }
 
-//reducer("hello world")
+reducer("hello world")
 
 
 
@@ -34,23 +34,23 @@ const reducer = (value) => {
 
 
 
-const ternaryReducer = (ternaryString) => {
-    let result = ternaryString[0]
-    Array.from(ternaryString).reduce((previous, current) => {
-        result +=
-            /[aeiouAEIOU]/.test(previous) && !/[aeiouAEIOU]/.test(current)
-            ? current.toUpperCase()
-            : current
+// const ternaryReducer = (ternaryString) => {
+//     let result = ternaryString[0]
+//     Array.from(ternaryString).reduce((previous, current) => {
+//         result +=
+//             /[aeiouAEIOU]/.test(previous) && !/[aeiouAEIOU]/.test(current)
+//             ? current.toUpperCase()
+//             : current
         
-        return !/[a-zA-Z]/.test(current)
-        ? previous
-        : current
-    })
+//         return !/[a-zA-Z]/.test(current)
+//         ? previous
+//         : current
+//     })
 
-    return result
-}
+//     return result
+// }
 
-console.log(ternaryReducer("hello world"))
+// console.log(ternaryReducer("hello world"))
 
 
 // Exercise carry on with the precious help of Marçal Chaiben (github @Chaiben)
